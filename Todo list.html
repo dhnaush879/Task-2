@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="todo.css" />
+</head>
+<body>
+ <div class="todo-app">
+  <h2>My To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="Add a task..." />
+  <button id="addTask">Add</button>
+  <ul id="taskList"></ul>
+</div>
+<script>
+const input = document.getElementById('taskInput');
+const button = document.getElementById('addTask');
+const list = document.getElementById('taskList');
+
+button.addEventListener('click', () => {
+  const task = input.value.trim();
+  if (task) {
+    const li = document.createElement('li');
+    li.textContent = task;
+
+    const remove = document.createElement('button');
+    remove.textContent = '❌';
+    remove.onclick = () => li.remove();
+
+    li.appendChild(remove);
+    list.appendChild(li);
+    input.value = '';
+  }
+});
+</script>
+</body>
+</html>
